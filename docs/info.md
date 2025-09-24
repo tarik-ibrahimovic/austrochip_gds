@@ -9,8 +9,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
-
+Provide input words a and b LSB first into the design one by one synchronized with the clock to receive the output bit at the same position.
 ## How to test
 
 Explain how to use your project
