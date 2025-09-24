@@ -14,5 +14,4 @@ Provide input words a and b LSB first into the design one by one synchronized wi
 
 This is how to test
 ## External hardware
-
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+this is the ext hardware
