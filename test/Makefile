@@ -5,8 +5,9 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = ex.v project.v
 
+# Silence missing-pin noise from std-cell/tap instantiations
 ifneq ($(GATES),yes)
 
 # RTL simulation:
@@ -32,13 +33,16 @@ endif
 
 # Allow sharing configuration between design and testbench via `include`:
 COMPILE_ARGS 		+= -I$(SRC_DIR)
+# Verilator 5+: enable simple timing
+# COMPILE_ARGS += --timing
+# COMPILE_ARGS += -Wno-fatal
 
 # Include the testbench sources:
 VERILOG_SOURCES += $(PWD)/tb.v
 TOPLEVEL = tb
 
-# MODULE is the basename of the Python test file
-MODULE = test
+# List test modules to run, separated by commas and without the .py suffix:
+COCOTB_TEST_MODULES = test
 
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
